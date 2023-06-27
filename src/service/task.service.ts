@@ -1,4 +1,4 @@
-import { tasktype } from "protocols";
+import { tasktype } from "../protocols/index";
 import * as taskRepository from "../repository/task.repository"
 
 
