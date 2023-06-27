@@ -1,7 +1,7 @@
 import { Router } from "express";
 import * as taskController from "../controller/task.controller"
-import { taskCheck } from "middlewares/task.middlewares";
-import { taskTypeSchema } from "schemas/task.schema";
+import { taskCheck } from "../middlewares/task.middlewares";
+import { taskTypeSchema } from "../schemas/task.schema";
 const taskRouter = Router();
 
 

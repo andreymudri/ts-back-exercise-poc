@@ -13,4 +13,6 @@ app.use(json());
  app.use(taskRouter)
 const port:number = 5000;
 
+//TODO: POSTGRE DB
+
 app.listen(port, ()=>console.log('server up'))

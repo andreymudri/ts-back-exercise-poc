@@ -1,39 +1,37 @@
+import { db } from "../database/database";
 import { tasktype } from "protocols";
 
-const tasks: tasktype[] = [
-    {
-      task: "Complete project report",
-      author: "John Doe",
-      status: true,
-    },
-    {
-      task: "Prepare presentation slides",
-      author: "Jane Smith",
-      status: false,
-    },
-    {
-      task: "Review code changes",
-      author: "John Doe",
-      status: true,
-    },
-    {
-      task: "Schedule team meeting",
-      author: "Sarah Johnson",
-      status: false,
-    },
-    {
-      task: "Test new software release",
-      author: "Jane Smith",
-      status: true,
-    },
-  ];
-  
 
 
+export function createTask(task: tasktype) {
+  try {
+    const query = `
+    INSERT INTO tasks (task, author, status) VALUES ($1,$2,$3);
+    `
+    db.query(query,[task.task,task.author,task.status])
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error creating task");
+    
+  }
 
-export function createTask(task:tasktype){
-    return tasks.push(task);
 }
-export function getTask() {
-    return tasks;
+export async function getTask() {
+try {
+  const result = await db.query(`SELECT * FROM tasks`)
+  console.log(result.rows)
+  return result.rows;
+} catch (error) {
+  console.log(error)
+  throw new Error('getTaskRepo failed')
 }
+}
+
+
+
+/* CREATE TABLE IF NOT EXISTS tasks (
+  id SERIAL PRIMARY KEY,
+  task TEXT NOT NULL,
+  author TEXT NOT NULL,
+  status BOOLEAN NOT NULL
+); */

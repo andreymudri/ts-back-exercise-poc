@@ -9,8 +9,8 @@ export function createTask(req: Request, res: Response) {
     res.sendStatus(httpStatus.CREATED);
 }
 
-export function getTask(req: Request, res: Response) {
+export async function getTask(req: Request, res: Response) {
 
-    const tasks = taskService.getTask();
+    const tasks = await taskService.getTask();
     res.send(tasks)
 }
