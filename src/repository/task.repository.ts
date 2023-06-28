@@ -3,7 +3,7 @@ import { tasktype } from "protocols";
 
 
 
-export function createTask(task: tasktype) {
+export function createTask(task: tasktype):void {
   try {
     const query = `
     INSERT INTO tasks (task, author, status) VALUES ($1,$2,$3);
@@ -16,7 +16,7 @@ export function createTask(task: tasktype) {
   }
 
 }
-export async function getTask() {
+export async function getTask(): Promise<tasktype[]> {
 try {
   const result = await db.query(`SELECT * FROM tasks`)
   console.log(result.rows)

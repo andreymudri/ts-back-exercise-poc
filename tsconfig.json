@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    
     "outDir": "dist",
     "esModuleInterop": true,
-     "module": "CommonJS", 
+    "module": "CommonJS",
 
-    "target": "es5",   
+    "target": "es5",
     "moduleResolution": "Node",
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "noImplicitAny": true
   },
   "ts-node": {
     "esm": true
