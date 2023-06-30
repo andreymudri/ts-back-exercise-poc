@@ -14,3 +14,15 @@ export async function getTask(req: Request, res: Response):Promise<any> {
     const tasks = await taskService.getTask();
     res.send(tasks)
 }
+
+export async function delTask(req: Request, res: Response) {
+    const id = parseInt(req.params.id);
+    await taskService.delTask(id);
+
+    res.sendStatus(httpStatus.OK);
+}
+
+export async function editTask(req: Request, res: Response) {
+    const id = parseInt(req.params.id)
+    
+}

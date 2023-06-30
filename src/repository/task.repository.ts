@@ -1,5 +1,7 @@
 import { db } from "../database/database";
 import { tasktype } from "protocols";
+import { taskCheck } from "../middlewares/task.middlewares";
+import { QueryResult } from "pg";
 
 
 
@@ -27,6 +29,30 @@ try {
 }
 }
 
+export async function delTask(id: number) {
+  try {
+    await db.query(`DELETE FROM tasks WHERE ID=$1`, [id]);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }  
+}
+
+export async function editTask(id:number):Promise<void>{
+  try {
+    const result:QueryResult<tasktype> = await db.query(`SELECT FROM tasks where ID=$1`, [id])
+    const updatedTask: tasktype = result.rows[0];
+    updatedTask.status = !updatedTask.status
+    await db.query(`UPDATE tasks SET task = $1, author = $2, status = $3 WHERE id = $4`,
+      [updatedTask.task, updatedTask.author, updatedTask.status, updatedTask.id]
+    );
+
+  } catch (error) {
+    console.log(error);
+    throw error;
+
+  }
+}
 
 
 /* CREATE TABLE IF NOT EXISTS tasks (

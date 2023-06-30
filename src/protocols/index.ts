@@ -1,5 +1,6 @@
 export type tasktype = {
     task:string,
     author:string,
- status:boolean,
+    status: boolean,
+    id?:number,
 }

@@ -7,6 +7,7 @@ const taskRouter = Router();
 
 taskRouter.get('/task', taskController.getTask);
 taskRouter.post('/task',taskCheck(taskTypeSchema), taskController.createTask);
-
+taskRouter.delete('/task/:id')
+taskRouter.put('/task/:id',taskCheck(taskTypeSchema))
 
 export default taskRouter;
