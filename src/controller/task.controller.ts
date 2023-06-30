@@ -23,6 +23,7 @@ export async function delTask(req: Request, res: Response) {
 }
 
 export async function editTask(req: Request, res: Response) {
-    const id = parseInt(req.params.id)
-    
+    const id = parseInt(req.params.id);
+    await taskService.editTask(id);
+    res.sendStatus(httpStatus.OK);
 }

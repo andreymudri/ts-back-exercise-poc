@@ -9,7 +9,11 @@ export function getTask():Promise<tasktype[]> {
     return taskRepository.getTask();
 }
 export function delTask(id: number) {
-    if(id <=0)  throw new Error('id menor que zero')
+    if (id <= 0) throw new Error('id menor que zero');
     return taskRepository.delTask(id);
 
+}
+export function editTask(id: number) {
+    if (id <= 0) throw new Error('id menor que zero');
+    return taskRepository.editTask(id);
 }

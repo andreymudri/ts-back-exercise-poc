@@ -2,7 +2,7 @@
 
 
 
-### /task (post/get)
+### /task (post/get/put/delete)
 {
   "task": "string",
   "author": "string",
